@@ -1,11 +1,17 @@
 import React from 'react'
+import Header from './Header'
 
 const App = () => {
   return (
+
+
+
+
+
+
     <div>
-      <h1 className='text-8xl'>Th
+        <Header/>
         
-        is is headksamdxksamdskadsakdnsakdnakjing</h1>
     </div>
   )
 }
