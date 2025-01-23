@@ -1,19 +1,13 @@
-import React from 'react'
-import Header from './Header'
-
-const App = () => {
+import React from "react";
+import Maincomponent from "./Components/Maincomponent";
+function App() {
   return (
+    <>
+    <Maincomponent/>
 
+    </>
 
-
-
-
-
-    <div>
-        <Header/>
-        
-    </div>
-  )
+  );
 }
 
-export default App
+export default App;
