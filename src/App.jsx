@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./Components/Navbar";
+import Header from "./Components/Header";
+import ArivalProducts from "./Components/ArivalProducts";
 
 const App = () => {
   return (
-    <div>
-      <h1 className='text-8xl'>This is heading</h1>
-    </div>
-  )
-}
+    <>
+      <Header />
+      <Navbar />
+      <ArivalProducts/>
+    </>
+  );
+};
 
-export default App
+export default App;
