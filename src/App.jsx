@@ -1,10 +1,15 @@
 import React from "react";
-import Home from "./Components/Styles/Home";
+import Megamarket from "./Components/Megamarket.jsx";
 
-const App = () => {
+function App() {
+  
   return (
     <>
-     <Home/>
+    {/* <Maincomponent/> */}
+
+
+    <Megamarket/>
+
     </>
   );
 };
