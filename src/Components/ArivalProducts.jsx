@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../Components/Styles/ArivalProducts.css";
 import axios from "axios";
 
-const ArivalProducts = () => {
+const ArivalProducts = (props) => {
   const sliderRef = useRef(null);
 
   const [products, setProducts] = useState([]);
@@ -47,16 +47,16 @@ const ArivalProducts = () => {
   };
 
   return (
-    <div className="py-20 w-full mt-10">
+    <div className="py-20 w-full mt-4">
       <div className="w-[95%] m-auto px-5">
         <h1 className="text-4xl font-bold text-center mb-10">
-          <span className="text-[#AD6237]">Featured</span> Products
+          <span className="text-[#AD6237]">{props.Feature}</span> {props.Product}
         </h1>
 
         <Slider ref={sliderRef} {...settings}>
           {products.map((da) => {
             return (
-              <div className="px-5" key={da.id}>
+              <div className="px-5 mt-2 hover:cursor-pointer" key={da.id}>
                 <div className="bg-white p-5 rounded-lg shadow-xl card-container">
                   <div className="relative group">
                     <img

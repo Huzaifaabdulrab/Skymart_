@@ -1,14 +1,10 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import Header from "./Components/Header";
-import ArivalProducts from "./Components/ArivalProducts";
+import Home from "./Components/Styles/Home";
 
 const App = () => {
   return (
     <>
-      <Header />
-      <Navbar />
-      <ArivalProducts/>
+     <Home/>
     </>
   );
 };

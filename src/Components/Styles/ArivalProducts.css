@@ -10,16 +10,15 @@
 }
 
 .card-container {
-    height: 350px; /* Fixed height for the card */
+    height: 350px; 
     display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    justify-content: space-between; /* Distribute space evenly */
+    flex-direction: column;
+    justify-content: space-between; 
   }
   
   .card-image {
     height: 200px; 
-    width: 100%; /* Keep it responsive */
+    width: 100%; 
     object-fit: contain;
-     /* Crop the image properly to fit the container */
   }
   
