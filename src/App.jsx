@@ -1,9 +1,14 @@
 import React from "react";
-import Maincomponent from "./Components/Maincomponent";
+import Megamarket from "./Components/Megamarket.jsx";
+
 function App() {
+  
   return (
     <>
-    <Maincomponent/>
+    {/* <Maincomponent/> */}
+
+
+    <Megamarket/>
 
     </>
 
