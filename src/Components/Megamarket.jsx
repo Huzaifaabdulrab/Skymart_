@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import braslet from "../assets/main/braslet.png";
+import { useNavigate } from "react-router-dom";
 
 const Megamarket = (props) => {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+  const handleProductClick = (product) => {
+    console.log("Navigating with product:", product);
+    navigate(`/hotProduct`, { state: { product } });
+  };
 
   useEffect(() => {
     axios
@@ -22,13 +28,14 @@ const Megamarket = (props) => {
         <span className="text-[#AD6237]">{props.Feature}</span> {props.Product}
       </h1>
 
-      <div className="p-4 flex flex-col lg:flex-row items-center w-[90%] m-auto h-[100%]">
-        {/* Product Cards Section (Left Side) */}
+      <div className="cursor-pointer p-4 flex flex-col lg:flex-row items-center w-[90%] m-auto h-[100%]">
+    
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full lg:w-2/3">
           {products.map((product) => (
             <div
-              key={product.id}
-              className="border p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow relative"
+            className="border p-4 rounded-lg shadow-lg hover:shadow-xl transition-shadow relative"
+            key={product.id}
+            onClick={() => handleProductClick(product)}
             >
               <img
                 src={product.image}
@@ -37,7 +44,7 @@ const Megamarket = (props) => {
               />
               <h2 className="text-lg font-semibold">{product.title}</h2>
               <p className="text-gray-600 font-medium">${product.price}</p>
-              {/* Icon container (hidden initially) */}
+             
               <div className="absolute h-full w-full pb-24 inset-0 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                 {/* Like Icon */}
                 <button className="bg-white p-2 rounded-full shadow-md mr-4 hover:bg-gray-100 transition">
@@ -50,7 +57,7 @@ const Megamarket = (props) => {
                     <path d="M3.172 5.172a4.004 4.004 0 015.656 0L10 6.343l1.172-1.171a4.004 4.004 0 015.656 5.656l-7.071 7.071a.999.999 0 01-1.414 0L3.172 10.828a4.004 4.004 0 010-5.656z" />
                   </svg>
                 </button>
-                {/* Eye Icon */}
+               
                 <button className="bg-white p-2 rounded-full shadow-md mr-4 hover:bg-gray-100 transition">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +80,7 @@ const Megamarket = (props) => {
                     />
                   </svg>
                 </button>
-                {/* Reload Icon */}
+            
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +108,6 @@ const Megamarket = (props) => {
             </button>
           </div>
 
-          {/* Image */}
           <img
             src={braslet}
             alt="Bracelet"

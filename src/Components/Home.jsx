@@ -6,6 +6,7 @@ import ArivalProducts from './ArivalProducts'
 import Popular from './Popular'
 import Footer from './Footer'
 import Megamarket from './Megamarket'
+import Catagri from './Catagri'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <ArivalProducts/>
       <Megamarket Feature='Fashion and Beauty' Product='Mega Market'/>
       <Popular popular='Popular' Catogeries='Catogeries'/> 
+      <Catagri popular='Product' Catogeries='Catogeries'/>
       <Footer/>
     </>
   )

@@ -6,7 +6,6 @@ import Contact from "./Components/Pages/Contact";
 import Hotproduct from "./Components/Pages/Hotproduct";
 import Productlist from "./Components/Productlist";
 
-
 function App() {
   
   return (
@@ -18,6 +17,9 @@ function App() {
       <Route path="/HotProduct" element={<Hotproduct/>}/>
       <Route path="/Productlist" element={<Productlist/>}/>
     </Routes>
+
+    {/* <Maincomponent/> */}
+
 
     </>
   );
