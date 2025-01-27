@@ -1,5 +1,6 @@
 import React from "react";
 import Megamarket from "./Components/Megamarket.jsx";
+import Catagri from "./Components/Catagri.jsx";
 
 function App() {
   
@@ -8,8 +9,7 @@ function App() {
     {/* <Maincomponent/> */}
 
 
-    <Megamarket/>
-
+<Catagri/>
     </>
 
   );
