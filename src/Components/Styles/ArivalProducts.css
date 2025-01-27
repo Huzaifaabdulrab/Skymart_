@@ -1,24 +1,23 @@
 .slick-next:before {
-    content: '→';
-    color: #Ac6236;
-    font-size: 25px;
+  content: "→";
+  color: #ac6236;
+  font-size: 25px;
 }
 .slick-prev:before {
-    content: '←';
-    color: #Ac6236;
-    font-size: 25px;
+  content: "←";
+  color: #ac6236;
+  font-size: 25px;
 }
 
 .card-container {
-    height: 350px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-  }
-  
-  .card-image {
-    height: 200px; 
-    width: 100%; 
-    object-fit: contain;
-  }
-  
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-image {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+}

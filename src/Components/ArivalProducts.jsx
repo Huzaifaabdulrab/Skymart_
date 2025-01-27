@@ -4,11 +4,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../Components/Styles/ArivalProducts.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const ArivalProducts = (props) => {
   const sliderRef = useRef(null);
-
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
+  const handleProductClick = (product) => {
+    console.log("Navigating with product:", product);
+    navigate(`/hotProduct`, { state: { product } });
+  };
 
   useEffect(() => {
     axios
@@ -47,16 +53,25 @@ const ArivalProducts = (props) => {
   };
 
   return (
-    <div className="py-20 w-full mt-4">
+    <div className="py-5 w-full mt-14">
       <div className="w-[95%] m-auto px-5">
-        <h1 className="text-4xl font-bold text-center mb-10">
-          <span className="text-[#AD6237]">{props.Feature}</span> {props.Product}
+        <h1
+          className={`text-4xl font-bold text-center mb-1 ${
+            props.Feature ? "" : "hidden"
+          }`}
+        >
+          <span className="text-[#AD6237]">{props.Feature}</span>{" "}
+          {props.Product}
         </h1>
 
         <Slider ref={sliderRef} {...settings}>
           {products.map((da) => {
             return (
-              <div className="px-5 mt-2 hover:cursor-pointer" key={da.id}>
+              <div
+                className="px-5 mt-10 hover:cursor-pointer"
+                key={da.id} 
+                onClick={() => handleProductClick(da)} 
+              >
                 <div className="bg-white p-5 rounded-lg shadow-xl card-container">
                   <div className="relative group">
                     <img
@@ -90,7 +105,7 @@ const ArivalProducts = (props) => {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth="2"
-                              d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3z"
+                              d="M15 12c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3.343 1.343 3 3z"
                             />
                             <path
                               strokeLinecap="round"
@@ -119,7 +134,6 @@ const ArivalProducts = (props) => {
                     </div>
                   </div>
                   <div className="px-2">
-                    {/* <p>Best Seller</p> */}
                     <h3 className="font-semibold py-2">{da.title}</h3>
                     <p>${da.price}</p>
                   </div>

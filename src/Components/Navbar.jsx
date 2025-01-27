@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isAllPagesDropdownOpen, setIsAllPagesDropdownOpen] = useState(false);
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#AD6237] p-2 flex justify-between items-center">
+      <nav className="bg-[#AD6237] p-2 flex justify-between items-center sticky top-0 z-50">
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex justify-between items-center gap-5">
@@ -46,12 +47,12 @@ const Navbar = () => {
           {/* Menu Links */}
           <ul className="flex text-white font-semibold gap-5 justify-center items-center">
             <li>
-              <a
+              <Link
                 className="hover:bg-white p-2 hover:text-[#AD6237] hover:rounded-md"
-                href="#"
+              to="/"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <div
@@ -59,17 +60,19 @@ const Navbar = () => {
                 onMouseEnter={() => setIsHotProductsDropdownOpen(true)}
                 onMouseLeave={() => setIsHotProductsDropdownOpen(false)}
               >
-                <a
-                  href="#"
+                <Link
+                  to="/Productlist"
                   className="hover:bg-white hover:text-[#AD6237] p-2 hover:rounded-md flex items-center"
                 >
                   Hot Products
                   <i className="fa-solid fa-arrow-down ml-3"></i>
-                </a>
+                </Link>
                 {isHotProductsDropdownOpen && (
                   <ul className="absolute left-0 top-full mt-2 bg-white shadow-md rounded-md text-[#AD6237] z-10">
                     <li className="px-4 py-2 hover:bg-[#AD6237] hover:text-white">
+                      <Link to="/Productlist">
                       Services
+                      </Link>
                     </li>
                     <li className="px-4 py-2 hover:bg-[#AD6237] hover:text-white">
                       Blog
@@ -82,20 +85,20 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-white hover:text-[#AD6237] p-2 hover:rounded-md"
-                href="#"
+                to="/OurStory"
               >
                 Our Story
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-white hover:text-[#AD6237] p-2 hover:rounded-md"
-                href="#"
+                to="/Contact"
               >
-                Contact
-              </a>
+                Contact us
+              </Link>
             </li>
           </ul>
         </div>
@@ -172,16 +175,16 @@ const Navbar = () => {
         <div className="lg:hidden bg-[#AD6237] p-4 text-white">
           <ul className="space-y-3">
             <li>
-              <a href="#" className="block">Home</a>
+              <Link to="/" className="block">Home</Link>
             </li>
             <li>
               <a href="#" className="block">Hot Products</a>
             </li>
             <li>
-              <a href="#" className="block">Our Story</a>
+              <Link to="/OurStory" className="block">Our Story</Link>
             </li>
             <li>
-              <a href="#" className="block">Contact</a>
+              <Link to="/Contact" className="block">Contact</Link>
             </li>
           </ul>
         </div>
