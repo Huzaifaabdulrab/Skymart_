@@ -1,0 +1,16 @@
+.aftershoping {
+    position: relative; /* Ensure positioning context */
+    display: inline-block; /* Avoid full-width block */
+}
+
+.aftershoping::after {
+    content: "";
+    border: 2px solid black;
+    width: 20vw;
+    height: 5px;  /* Add height to make it visible */
+    background: #000;
+    position: absolute;
+    top: 50%;  /* Adjust vertically */
+    right: -25vw;  /* Move to the right */
+    transform: translateY(-50%); /* Center vertically */
+}
