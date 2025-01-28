@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {LikesContext} from "../../Context"
 import Header from "../Header";
 import Navbar from "../Navbar";
 import Blog from "../Blog";
@@ -7,11 +8,12 @@ import { useLocation } from "react-router-dom";
 import ArivalProducts from "../ArivalProducts";
 
 const Hotproduct = () => {
+  const [likes, setLikes] = useContext(LikesContext);
   const location = useLocation();
   const { product } = location.state || {};
 
   if (!product) {
-    return <p>No product details found. Please go back and try again.</p>;
+    return <p className="text-center text-lg mt-10">No product details found. Please go back and try again.</p>;
   }
 
   const image = [
@@ -39,8 +41,9 @@ const Hotproduct = () => {
     <>
       <Header />
       <Navbar />
-      <div className="flex flex-col md:flex-row mt-10 w-[90%] m-auto min-h-screen">
-        <div className="relative h-[90vh] w-48 overflow-hidden border rounded-lg shadow-lg mr-8 group">
+      <div className="flex flex-col md:flex-row mt-10 w-[90%] m-auto min-h-screen gap-6">
+        
+        <div className="relative h-[50vh] md:h-[90vh] w-24 md:w-48 overflow-hidden border rounded-lg shadow-lg group">
           <div
             className="transition-transform duration-500 ease-in-out h-full"
             style={{
@@ -52,11 +55,12 @@ const Hotproduct = () => {
                 key={index}
                 src={product.image}
                 alt={`Slide ${index}`}
-                className="w-full h-[25%] p-3"
+                className="w-full object-contain h-[25%] p-1 md:p-3"
               />
             ))}
           </div>
 
+        
           <button
             onClick={() => handleScroll("down")}
             disabled={currentIndex === 0}
@@ -76,21 +80,35 @@ const Hotproduct = () => {
           </button>
         </div>
 
-        <div className="flex gap-10 items-start text-left">
-          <div className="flex justify-center items-center mb-4">
+       
+        <div className="flex flex-col md:flex-row gap-6 w-full">
+        
+          <div className=" flex justify-center items-start mb-4">
             <img
               src={product.image}
               alt={product.title}
-              className="w-[40vw] h-[40%] object-cover border rounded-lg"
+              className="md:w-[40vw] h-[65%] object-contain border rounded-lg"
             />
           </div>
 
-          <div className="max-w-md">
-            <h2 className="text-2xl font-bold mb-2">{product.title}</h2>
+        
+          <div className="max-w-full md:max-w-md">
+            <h2 className="text-xl md:text-2xl font-bold mb-2">{product.title}</h2>
             <span className="text-gray-600">Brand:</span>
             <div className="mt-2 flex items-center justify-start gap-10">
               <p className="cursor-pointer flex items-center">
-                <i className="fas fa-heart mr-2"></i> Add to Wishlist
+                <i
+                  onClick={() => {
+                    setLikes((prev) => {
+                      if (prev.includes(product.id)) {
+                        return prev.filter((id) => id !== product.id);
+                      } else {
+                        return [...prev, product.id];
+                      }
+                    });
+                  }}
+                  className={`fas fa-heart  mr-2 ${likes.includes(product.id) ? "text-red-500" : ""}`}
+                ></i> Add to Wishlist
               </p>
               <p className="cursor-pointer flex items-center">
                 <i className="fas fa-exchange-alt mr-2"></i> Compare
@@ -100,7 +118,7 @@ const Hotproduct = () => {
               11 people are viewing this product right now
             </p>
             <hr className="my-4" />
-            <h2 className="text-3xl font-semibold">{product.price}</h2>
+            <h2 className="text-2xl md:text-3xl font-semibold">${product.price}</h2>
             <p className="text-gray-700 mt-2">
               <a href="#" className="underline">
                 Shipping
@@ -108,10 +126,10 @@ const Hotproduct = () => {
               calculated at checkout.
             </p>
 
-            <div className="mt-10">
+            <div className="mt-6">
               <p>Color</p>
               <select
-                className="mt-2 outline-black px-3 py-3 border rounded-xl"
+                className="mt-2 outline-black px-3 py-2 border rounded-lg"
                 name="color"
                 id="color"
               >
@@ -122,9 +140,9 @@ const Hotproduct = () => {
               </select>
             </div>
 
-            <div className="mt-20 gap-10 flex">
+            <div className="mt-10 flex flex-col md:flex-row gap-4">
               <select
-                className="px-4 py-2 border rounded-xl"
+                className="px-4 py-2 border rounded-lg"
                 name="quantity"
                 id="quantity"
               >
@@ -134,12 +152,12 @@ const Hotproduct = () => {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <button className="w-full bg-slate-700 text-white font-semibold rounded-xl shadow-lg flex items-center justify-center">
+              <button className="w-full bg-slate-700 px-10 py-3 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center">
                 <i className="fas fa-cart-plus mr-2"></i> Add to cart
               </button>
             </div>
             <div className="mt-5">
-              <button className="w-full bg-slate-900 px-10 py-3 rounded-xl shadow-lg text-white font-semibold flex items-center justify-center">
+              <button className="w-full bg-slate-900 px-10 py-3 rounded-lg shadow-lg text-white font-semibold flex items-center justify-center">
                 <i className="fas fa-credit-card mr-2"></i> Buy Now
               </button>
             </div>
@@ -149,10 +167,7 @@ const Hotproduct = () => {
                 Estimated delivery: <span className="font-normal">4 days</span>
               </p>
               <p className="mt-2 font-semibold">
-                SKU:{" "}
-                <span className="font-normal">
-                  9098538811689-2-pc-matte-lip-kit
-                </span>
+                SKU: <span className="font-normal">9098538811689-2-pc-matte-lip-kit</span>
               </p>
               <p className="mt-2 font-semibold">
                 Tags: <span className="font-normal">Beauty, Makeup</span>
@@ -163,17 +178,17 @@ const Hotproduct = () => {
             </div>
             <hr />
 
-            <div className="mt-5 flex gap-10 items-center justify-center">
+            <div className="mt-5 flex flex-col md:flex-row gap-6">
               <div>
                 <p>Have any Questions?</p>
                 <p>
-                  Feel free to{" "}
+                  Feel free to {" "}
                   <a href="#" className="font-semibold underline">
                     Get in touch
                   </a>
                 </p>
               </div>
-              <div className="flex mt-5 gap-4 text-2xl">
+              <div className="flex gap-4 text-2xl">
                 <a href="#" className="text-blue-600">
                   <i className="fab fa-facebook-f"></i>
                 </a>
