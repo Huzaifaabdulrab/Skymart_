@@ -1,7 +1,8 @@
 import Navbar from "./Navbar";
 import Header from "./Header";
-import Footer from "./Footer"
+import Footer from "./Footer";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   FaFacebook,
@@ -16,6 +17,11 @@ const Productlist = () => {
   const [filters, setFilters] = useState([]);
   const [customMin, setCustomMin] = useState(0);
   const [customMax, setCustomMax] = useState(Infinity);
+  const navigate = useNavigate();
+
+  const handleProductClick = (product) => {
+    navigate(`/hotProduct`, { state: { product } });
+  };
 
   useEffect(() => {
     axios
@@ -68,16 +74,129 @@ const Productlist = () => {
     <>
       <Header />
       <Navbar />
-      <div className="flex w-[90%] m-auto mb-10 mt-10">
-     
-        <div className="categoryFilter w-64 rounded-lg p-4 sticky top-40">
+      <div className="flex flex-wrap items-center justify-around gap-6 mt-5 cursor-pointer">
+        <div className="flex flex-col items-center">
+          <p className="font-semibold rounded-full w-16 h-16 flex items-center justify-center bg-gray-200 text-center">
+            ALL
+          </p>
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Shop All
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <p className="rounded-full font-semibold w-16 h-16 flex items-center justify-center bg-gray-200 text-center">
+            NEW
+          </p>
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            New Arrival
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <p className="rounded-full w-16 h-16 flex font-semibold items-center justify-center bg-gray-200 text-center">
+            SALE
+          </p>
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Sale
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/model-career-kit-still-life_23-2150218026-300x300.jpg"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Accessories
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/best-seller-banner_175838-470-300x300.avif"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Best Seller
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/rb_2308-300x300.png"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Free Shipping
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/fashion-woman-profile-logo_23-2147492644-300x300.jpg"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Hair Products
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/white-round-copy-space-set-beauty-products-flat-laytop-view_279659-995-300x300.avif"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Makeup
+          </a>
+        </div>
+        <div className="flex flex-col items-center">
+          <img
+            className="object-contain rounded-full w-16 h-16 bg-gray-200"
+            src="https://sandxcity.com/wp-content/uploads/2024/11/rb_9-300x300.png"
+            alt=""
+          />
+          <a
+            href="#"
+            className="font-semibold underline mt-2 text-sm text-gray-700"
+          >
+            Multiple Products
+          </a>
+        </div>
+      </div>
+
+      <div className="flex flex-col md:flex-row w-full m-auto mt-10 mb-10">
+        {/* Sidebar (Category Filter) */}
+        <div className="categoryFilter w-full md:w-64 rounded-lg p-4 sticky top-40 md:top-20">
           <h3 className="text-center font-semibold text-lg mb-4">Filters</h3>
           <input
             className="w-full p-2 border rounded mb-4"
             type="search"
             placeholder="Search categories"
           />
-
           <div className="space-y-2">
             <div className="flex items-center">
               <input
@@ -188,7 +307,6 @@ const Productlist = () => {
                 $1,500.00 - $2,000.00
               </label>
             </div>
-
             <div className="mt-4">
               <div className="flex items-center gap-2">
                 <input
@@ -230,7 +348,6 @@ const Productlist = () => {
             </div>
           </div>
 
-         
           <div className="mt-10">
             <h3 className="font-semibold mb-4">Social Links</h3>
             <div className="space-y-2 flex items-baseline gap-2 text-xl">
@@ -253,13 +370,14 @@ const Productlist = () => {
           </div>
         </div>
 
-
-        <div className="cursor-pointer products w-full ml-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-y-auto">
+        {/* Product Grid */}
+        <div className="cursor-pointer bg-white products z-20 w-full md:w-3/4 ml-0 md:ml-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-y-auto">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <div
                 className="bg-white p-5 rounded-lg shadow-lg hover:shadow-2xl transition-shadow"
                 key={product.id}
+              onClick={() => handleProductClick(product)}
               >
                 <div className="relative overflow-hidden rounded-lg group">
                   <img
@@ -282,7 +400,7 @@ const Productlist = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </>
   );
 };

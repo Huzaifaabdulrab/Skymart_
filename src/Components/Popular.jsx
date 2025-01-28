@@ -12,7 +12,6 @@ const Popular = (props) => {
   const navigate = useNavigate();
 
   const handleProductClick = (product) => {
-    console.log("Navigating with product:", product);
     navigate(`/hotProduct`, { state: { product } });
   };
 
@@ -20,7 +19,6 @@ const Popular = (props) => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((res) => {
-        console.log("Fetched products:", res.data);
         setProducts(res.data);
       })
       .catch((error) => {

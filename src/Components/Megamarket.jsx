@@ -117,7 +117,6 @@ const Megamarket = (props) => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const handleProductClick = (product) => {
-    console.log("Navigating with product:", product);
     navigate(`/hotProduct`, { state: { product } });
   };
 
