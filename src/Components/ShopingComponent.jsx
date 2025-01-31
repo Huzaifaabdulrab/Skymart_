@@ -6,13 +6,15 @@ const ShopingComponent = () => {
   const [shoppingSteps] = useContext(ShoppingComponentContext);
   return (
 
+    
+
     <div className='flex flex-col sm:flex-row justify-between items-center w-full sm:w-[60%] m-auto mt-10 relative'>
 
       <div className='flex items-center relative mb-6 sm:mb-0'>
         <div className={`w-8 h-8 flex items-center justify-center rounded-full ${shoppingSteps == 1 ? 'bg-black text-white' : 'border-2 border-gray-200 text-gray-900'} font-bold`}>
           1
         </div>
-        <Link to="/" className='ml-3 font-semibold text-black'>SHOPPING CART</Link>   </div>
+        <Link to="/shopingcard" className='ml-3 font-semibold text-black'>SHOPPING CART</Link>   </div>
 
       <div className='  hidden sm:flex items-center relative'>
         <div className={`w-8 h-8 flex items-center justify-center rounded-full ${shoppingSteps == 2 ? 'bg-black text-white' : 'border-2 border-gray-200 text-gray-900'} font-bold`}>

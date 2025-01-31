@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+// import img from "../"
 
 const Footer = () => {
   return (
@@ -8,7 +10,7 @@ const Footer = () => {
       <div class="w-full md:w-1/3 mb-10 md:mb-0 text-center md:text-left">
         <a class="flex title-font font-medium items-center justify-center md:justify-start">
           <div class="text-3xl md:text-4xl font-bold text-[#A52A2A]">
-            <span class="text-[#FF6F50]">SAND</span>CITY
+            <img className="h-20" src="\assets\navbarlogo-removebg-preview.png" alt="" />
           </div>
         </a>
         <p class="mt-4 text-lg text-white">
@@ -19,17 +21,19 @@ const Footer = () => {
       
  
       <div class="w-full md:w-1/4 px-4 md:px-0 text-center md:text-left">
-        <h2 class="title-font font-semibold text-white tracking-widest text-xl mb-4">CATEGORIES</h2>
+        <h2 class="title-font font-semibold text-white tracking-widest text-xl mb-4">Categories</h2>
         <nav class="list-none space-y-2">
-          <li><a class="text-white text-lg hover:cursor-pointer">Home</a></li>
-          <li><a class="text-white text-lg hover:cursor-pointer">Products</a></li>
-          <li><a class="text-white text-lg hover:cursor-pointer">Our Story</a></li>
-          <li><a class="text-white text-lg hover:cursor-pointer">Contact Us</a></li>
+          <li><Link to="/" class="text-white text-lg hover:cursor-pointer">Home</Link></li>
+          <li><Link to="/Productlist" class="text-white text-lg hover:cursor-pointer">Products</Link></li>
+          <li><Link to="/OurStory" class="text-white text-lg hover:cursor-pointer">Our Story</Link></li>
+          <li><Link to="/Contact" class="text-white text-lg hover:cursor-pointer">Contact Us</Link></li>
+          <li><Link to="/Privacy" class="text-white  text-lg hover:cursor-pointer hover:underline">Privacy Policy</Link></li>
+          {/* <li><Link to="/" class="text-white text-lg  hover:cursor-pointer hover:underline">Terms of Services</Link></li> */}
         </nav>
       </div>
       
       
-      <div class="w-full md:w-1/3 px-4 md:px-0 text-center md:text-left">
+      <div class="w-full md:w-1/3 mt-10 md:mt-0 px-4 md:px-0 text-center md:text-left">
         <h2 class="title-font font-semibold text-white tracking-widest text-xl mb-4">Contact Us</h2>
         <nav class="list-none space-y-3">
           <li>

@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Header from "./Header";
 import Footer from "./Footer";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
@@ -11,12 +11,14 @@ import {
   FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
+import { SearchContext } from "../Context";
 
 const Productlist = () => {
   const [products, setProducts] = useState([]);
   const [filters, setFilters] = useState([]);
   const [customMin, setCustomMin] = useState(0);
   const [customMax, setCustomMax] = useState(Infinity);
+  const [searchTerm] = useContext(SearchContext);
   const navigate = useNavigate();
 
   const handleProductClick = (product) => {
@@ -68,13 +70,18 @@ const Productlist = () => {
       const min = parseFloat(customMin) || 0;
       const max = parseFloat(customMax) || Infinity;
       return product.price >= min && product.price <= max;
+    }).filter((product) => {
+      if (searchTerm) {
+        return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+      }
+      return true;
     });
 
   return (
     <>
       <Header />
       <Navbar />
-      <div className="flex flex-wrap items-center justify-around gap-6 mt-5 cursor-pointer">
+      <div className="flex flex-wrap items-center w-[90%] m-auto justify-around gap-6 mt-5 cursor-pointer">
         <div className="flex flex-col items-center">
           <p className="font-semibold rounded-full w-16 h-16 flex items-center justify-center bg-gray-200 text-center">
             ALL
@@ -188,7 +195,7 @@ const Productlist = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row w-full m-auto mt-10 mb-10">
+      <div className="flex flex-col md:flex-row w-[90%] m-auto mt-10 mb-10">
         {/* Sidebar (Category Filter) */}
         <div className="categoryFilter w-full md:w-64 rounded-lg p-4 sticky top-40 md:top-20">
           <h3 className="text-center font-semibold text-lg mb-4">Filters</h3>

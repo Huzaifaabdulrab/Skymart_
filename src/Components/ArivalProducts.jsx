@@ -14,6 +14,9 @@ const ArivalProducts = (props) => {
   const sliderRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [likedList, setLikedList] = useState([]);
+
+
+  
   const navigate = useNavigate();
 
   const handleProductClick = (product) => {

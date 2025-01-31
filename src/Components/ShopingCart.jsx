@@ -3,7 +3,10 @@ import ShopingComponent from "./ShopingComponent";
 import Softgow from "../assets/main/softglow.jpg";
 import { useCallback } from "react";
 import { ShoppingComponentContext } from "../Context";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 export default function ShoppingCart() {
   const [quantity, setQuantity] = useState(5);
@@ -14,10 +17,15 @@ export default function ShoppingCart() {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const product = location.state;
+
   return (
     <>
+    <Header/>
+    <Navbar/>
       <ShopingComponent />
-      <div className="mt-4 rounded-lg flex flex-col md:flex-row m-auto w-[90%] h-auto gap-8">
+      <div className="mt-10 mb-10 rounded-lg flex flex-col md:flex-row m-auto w-[90%] h-auto gap-8">
         {/* Left side: */}
         <div className="w-[100%] md:w-2/3">
           <h2 className="text-xl font-bold mb-4">Shopping Cart</h2>
@@ -31,14 +39,14 @@ export default function ShoppingCart() {
           </div>
 
           <div className="border-b py-4 grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
-            <div className="flex items-center space-x-4">
-              <img src={Softgow} alt="Product" className="w-16 rounded" />
-              <p className="font-semibold text-center md:text-left">Beverly Hills 5Pc Set</p>
+            <div className="">
+              <img src={product.image} alt="Product" className="w-16 rounded" />
+              <p className=" font-semibold text-center md:text-left">{product.title}</p>
             </div>
 
             <div>
               <p className="text-gray-600 font-semibold md:hidden">PRICE</p>
-              <p className="text-gray-700 font-medium">${pricePerItem}</p>
+              <p className="text-gray-700 font-medium">${product.price}</p>
             </div>
 
             <div>
@@ -104,7 +112,7 @@ export default function ShoppingCart() {
           <div className="flex justify-between font-bold text-xl mt-2">
             <span>TOTAL</span> <span>${subtotal}</span>
           </div>
-          <button onClick={()=> {setShoppingSteps(2); navigate('/chekout')}} className="bg-black text-white w-full py-2 mt-4 rounded">
+          <button onClick={()=> {setShoppingSteps(2); navigate('/chekout', {state:product})}} className="bg-black text-white w-full py-2 mt-4 rounded">
             Proceed To Checkout
           </button>
           <button className="border w-full py-2 mt-2 rounded">
@@ -126,6 +134,7 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

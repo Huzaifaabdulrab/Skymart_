@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 // import braslet from '../assets/main/braslet.png';
@@ -107,7 +106,6 @@
 // }
 
 // export default Megamarket;
-=======
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import braslet from "../assets/main/braslet.png";
@@ -229,4 +227,3 @@ const Megamarket = (props) => {
 };
 
 export default Megamarket;
->>>>>>> 068334873885ebfcd77abc0deb8118889f8ee0fa

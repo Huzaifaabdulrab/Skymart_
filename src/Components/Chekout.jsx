@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Softgow from "../assets/main/softglow.jpg"; // Ensure correct image path
 import ShopingComponent from "./ShopingComponent";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ShoppingComponentContext } from "../Context";
 import { useForm } from "react-hook-form";
+import Header from "../Components/Header"
+import Navbar from "../Components/Navbar"
+import Footer from "../Components/Footer"
 
 const Chekout = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -21,10 +24,13 @@ const Chekout = () => {
     }
   };
 
+  const location = useLocation();
+  const product = location.state;
+
   const onSubmit = (data) => {
     console.log(data); // Process form data
     setShoppingSteps(3);
-    navigate("/OrderStatus");
+    navigate("/OrderStatus", {state:product});
   };
 
   useEffect(()=>{
@@ -35,8 +41,10 @@ const Chekout = () => {
 
   return (
     <>
+    <Header/>
+    <Navbar/>
       <ShopingComponent />
-      <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <div className="max-w-6xl mb-10 mx-auto p-6 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-bold mb-6 text-center">Checkout</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -180,7 +188,7 @@ const Chekout = () => {
                 <button
                   type="button"
                   className="bg-gray-300 text-black py-2 px-4 rounded-lg"
-                  onClick={() => navigate("/shop")}
+                  onClick={() => navigate("/")}
                 >
                   Return to Shop
                 </button>
@@ -194,8 +202,8 @@ const Chekout = () => {
             <div className="mt-12 sticky top-12 border p-6 rounded-lg shadow-md bg-gray-50 md:h-[60%]">
               <h3 className="text-xl font-bold">CART TOTALS</h3>
               <div className="border-b py-4 flex items-center gap-4">
-                <img src={Softgow} alt="Product" className="w-28" />
-                <p className="font-semibold">Beverly Hills 5Pc Set</p>
+                <img src={product.image} alt="Product" className="w-28" />
+                <p className="font-semibold">{product.title}</p>
               </div>
 
               <div className="flex items-center gap-2 mt-4">
@@ -224,6 +232,7 @@ const Chekout = () => {
           </div>
         </form>
       </div>
+      <Footer/>
     </>
   );
 };

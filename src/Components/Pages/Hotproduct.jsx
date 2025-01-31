@@ -1,14 +1,15 @@
 import React, { useState, useContext } from "react";
-import {LikesContext} from "../../Context"
+import {CartContext, LikesContext} from "../../Context"
 import Header from "../Header";
 import Navbar from "../Navbar";
 import Blog from "../Blog";
 import Footer from "../Footer";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ArivalProducts from "../ArivalProducts";
 
 const Hotproduct = () => {
   const [likes, setLikes] = useContext(LikesContext);
+  const [cart , setCart] = useContext(CartContext);
   const location = useLocation();
   const { product } = location.state || {};
 
@@ -152,14 +153,24 @@ const Hotproduct = () => {
                 <option value="4">4</option>
                 <option value="5">5</option>
               </select>
-              <button className="w-full bg-slate-700 px-10 py-3 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center">
+              <button onClick={() => {
+                    setCart((prev) => {
+                      if (prev.includes(product.id)) {
+                        return prev.filter((id) => id !== product.id);
+                      } else {
+                        return [...prev, product.id];
+                      }
+                    });
+                  }} className="w-full bg-slate-700 px-10 py-3 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center">
                 <i className="fas fa-cart-plus mr-2"></i> Add to cart
               </button>
             </div>
             <div className="mt-5">
+              <Link to="/shopingcard" state={product}>
               <button className="w-full bg-slate-900 px-10 py-3 rounded-lg shadow-lg text-white font-semibold flex items-center justify-center">
                 <i className="fas fa-credit-card mr-2"></i> Buy Now
               </button>
+              </Link>
             </div>
 
             <div className="mt-10 mb-3">

@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#drop {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+#drop.flex {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px; 
+  }
+  
+  /* Track background */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px; 
+  }
+  
+  /* Handle (thumb) */
+  ::-webkit-scrollbar-thumb {
+    background: #AD6237; 
+    border-radius: 10px; 
+  }
+  
+  /* Handle hover state */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0410b; /* Hover par thumb ka color */
+  }
+  

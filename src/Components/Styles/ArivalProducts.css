@@ -1,11 +1,11 @@
 .slick-next:before {
   content: "→";
-  color: #ac6236;
+  color: #AD6237;
   font-size: 25px;
 }
 .slick-prev:before {
   content: "←";
-  color: #ac6236;
+  color: #AD6237;
   font-size: 25px;
 }
 

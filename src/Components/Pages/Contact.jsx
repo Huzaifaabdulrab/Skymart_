@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import Header from "../Header";
 import Navbar from "../Navbar";
-import { MapPin, HelpCircle } from "lucide-react";
+import Footer from "../Footer"
+import { MapPin, HelpCircle, Phone, Mail } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -26,7 +27,7 @@ const Contact = () => {
             <iframe
               width="100%"
               height="600px"
-              className="absolute inset-0 mt-40"
+              className="absolute inset-0 mt-36"
               frameBorder={0}
               title="map"
               marginHeight={0}
@@ -38,7 +39,7 @@ const Contact = () => {
           </div>
 
           <div className="lg:w-1/2 md:w-1/2 bg-white text-black flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0" data-aos="fade-up">
-            <div className="flex mb-10 gap-5" >
+            <div className="flex mb-5 gap-5" >
               <div className="w-80">
                 <h2 className="text-3xl font-semibold flex items-center gap-2">
                   <MapPin className="text-[#AD6237]" size={24} /> Our Office
@@ -47,7 +48,9 @@ const Contact = () => {
                   Office No- 50, 2nd Floor, Building No: 32, Street: 205. Zone:
                   56, PO Box: 212203 Ain Khaled, Salwa Road, Doha, Qatar
                 </p>
-                <p className="py-3">+974 3121 4373</p>
+                <p className="py-3 flex gap-4 items-center justify-start">
+                <Phone className="text-[#AD6237]" size={20} /> +974 3121 4373
+                </p>
               </div>
               <div className="w-80">
                 <h2 className="text-3xl font-semibold flex items-center gap-2">
@@ -57,7 +60,9 @@ const Contact = () => {
                   Our customer service team is available and is dedicated to
                   providing you with prompt and friendly assistance.
                 </p>
-                <p className="py-3">support@sandxcity.com</p>
+                <p className="py-3 flex gap-4 items-center justify-start">
+                <Mail className="text-[#AD6237]" size={20} /> support@sandxcity.com
+                </p>
               </div>
             </div>
 
@@ -113,6 +118,7 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   );
 };
