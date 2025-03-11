@@ -10,8 +10,9 @@ const Footer = () => {
       <div class="w-full md:w-1/3 mb-10 md:mb-0 text-center md:text-left">
         <a class="flex title-font font-medium items-center justify-center md:justify-start">
           <div class="text-3xl md:text-4xl font-bold text-[#A52A2A]">
-            <img className="h-20" src="\assets\navbarlogo-removebg-preview.png" alt="" />
-          </div>
+      
+          <div className="text-3xl md:text-4xl font-bold text-gray-500">
+         <span className="text-[#A52A2A]">S</span>ky<span  className="text-[#A52A2A]">M</span>art  </div>    </div>
         </a>
         <p class="mt-4 text-lg text-white">
           Shop the latest and greatest products online – unique items that bring

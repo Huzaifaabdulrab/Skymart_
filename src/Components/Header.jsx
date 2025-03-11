@@ -44,9 +44,8 @@ const Header = () => {
   return (
     <>
       <div className="flex flex-col md:flex-row items-center justify-between w-[95%] mx-auto py-4 gap-4">
-        <div className="text-3xl md:text-4xl font-bold text-[#A52A2A]">
-          <img className="h-20 bg-white" src={navlogo} alt="" />
-        </div>
+        <div className="text-3xl md:text-4xl font-bold text-gray-500">
+         <span className="text-[#AD6237]">S</span>ky<span  className="text-[#AD6237]">M</span>art  </div>
 
         <div className="order-3 md:order-none w-full flex md:w-[60%] lg:w-[40%] border border-gray-300 rounded-lg h-12 overflow-hidden">
           <input
@@ -64,7 +63,7 @@ const Header = () => {
           <FaPhoneAlt className="text-[#AD6237] text-xl md:text-2xl mr-2" />
           <div className="text-xs md:text-sm">
             <p className="text-gray-500">Need help? Call us:</p>
-            <p className="font-bold text-[#2F2F2F]">+974 3121 4373</p>
+            <p className="font-bold text-[#2F2F2F]">+XXXXXXXXX</p>
           </div>
         </div>
 
